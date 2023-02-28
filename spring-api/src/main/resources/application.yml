@@ -1,0 +1,39 @@
+server:
+  port: 8080
+        
+# spring Configs        
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/spring_api_db?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
+        username: root
+        password: admin123
+    
+    # Jackson Configs
+    jackson:
+        default-property-inclusion: NON_NULL
+
+    jpa:
+        hibernate: 
+            ddl-auto: validate
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+
+        show-sql: true
+        
+# Flyway Configs
+flyway:
+    url: jdbc:mysql://localhost:3306/
+    schemas: spring_api_db
+    user: root
+    password: admin123
+    
+#Swagger Configs
+springdoc:
+    pathsToMatch: 
+        - /auth/**
+        - /api/**/v1/**
+    swagger-ui:
+        use-root-path: true
+      
