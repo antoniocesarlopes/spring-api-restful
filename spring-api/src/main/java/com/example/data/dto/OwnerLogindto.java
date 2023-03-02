@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class UserLogindto {
+public class OwnerLogindto {
 	
 	@Email(message = "Invalid email address")
 	private String email;

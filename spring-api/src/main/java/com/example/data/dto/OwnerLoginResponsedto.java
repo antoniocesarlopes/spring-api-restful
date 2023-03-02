@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class UserLoginResponsedto implements Serializable {
+public class OwnerLoginResponsedto implements Serializable {
 	
 	/**
 	 * 

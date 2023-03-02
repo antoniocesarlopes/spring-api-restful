@@ -3,7 +3,7 @@ package com.example.data;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.example.data.enums.RequestState;
+import com.example.data.enums.SolicitationState;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,8 +25,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Entity(name = "request_stage")
-public class RequestStage implements Serializable {
+@Entity(name = "solicitation_stage")
+public class SolicitationStage implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,13 +43,13 @@ public class RequestStage implements Serializable {
 	
 	@Column(length = 12, nullable = false)
 	@Enumerated(EnumType.STRING)
-	private RequestState state;
+	private SolicitationState state;
 	
 	@ManyToOne
-	@JoinColumn(name = "request_id", nullable = false)
-	private Request request;
+	@JoinColumn(name = "solicitation_id", nullable = false)
+	private Solicitation solicitation;
 	
 	@ManyToOne
 	@JoinColumn(name = "owner_id", nullable = false)
-	private User owner;
+	private Owner owner;
 }

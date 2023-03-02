@@ -21,8 +21,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Entity(name = "request_file")
-public class RequestFile implements Serializable {
+@Entity(name = "solicitation_file")
+public class SolicitationFile implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -38,6 +38,6 @@ public class RequestFile implements Serializable {
 	
 	@Getter(onMethod = @__({@JsonIgnore}))
 	@ManyToOne
-	@JoinColumn(name = "request_id", nullable = false)
-	private Request request;
+	@JoinColumn(name = "solicitation_id", nullable = false)
+	private Solicitation solicitation;
 }

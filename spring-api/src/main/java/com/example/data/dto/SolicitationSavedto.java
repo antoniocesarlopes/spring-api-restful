@@ -3,9 +3,9 @@ package com.example.data.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.data.Request;
-import com.example.data.RequestStage;
-import com.example.data.User;
+import com.example.data.Solicitation;
+import com.example.data.SolicitationStage;
+import com.example.data.Owner;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -18,19 +18,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class RequestSavedto {
+public class SolicitationSavedto {
 	
 	@NotBlank(message = "Subject required")
 	private String subject;
 	private String description;
 	
 	@NotNull(message = "Owner required")
-	private User owner;
-	private List<RequestStage> stages = new ArrayList<RequestStage>();
+	private Owner owner;
+	private List<SolicitationStage> stages = new ArrayList<SolicitationStage>();
 	
-	public Request transformToRequest() {
-		Request request = new Request(null, this.subject, this.description, null, null, this.owner, stages, null);
-		return request;
+	public Solicitation transformToSolicitation() {
+		Solicitation solicitation = new Solicitation(null, this.subject, this.description, null, null, this.owner, stages, null);
+		return solicitation;
 	}
 	
 }

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class UserUpdateRoledto {
+public class OwnerUpdateRoledto {
 	
 	@NotNull(message = "Role required")
 	private Role role;

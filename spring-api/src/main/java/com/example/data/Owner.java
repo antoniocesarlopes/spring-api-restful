@@ -27,8 +27,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Data
 @Builder
-@Entity(name = "user")
-public class User implements Serializable{
+@Entity(name = "owner")
+public class Owner implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -53,9 +53,9 @@ public class User implements Serializable{
 	
 	@Getter(onMethod = @__({@JsonIgnore}))
 	@OneToMany(mappedBy = "owner")
-	private List<Request> requests = new ArrayList<Request>();
+	private List<Solicitation> solicitations = new ArrayList<Solicitation>();
 	
 	@Getter(onMethod = @__({@JsonIgnore}))
 	@OneToMany(mappedBy = "owner")
-	private List<RequestStage> stages = new ArrayList<RequestStage>();
+	private List<SolicitationStage> stages = new ArrayList<SolicitationStage>();
 }

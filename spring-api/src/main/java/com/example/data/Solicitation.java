@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.example.data.enums.RequestState;
+import com.example.data.enums.SolicitationState;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -30,8 +30,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Entity(name = "request")
-public class Request implements Serializable{
+@Entity(name = "solicitation")
+public class Solicitation implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -51,17 +51,17 @@ public class Request implements Serializable{
 	
 	@Column(length = 12, nullable = false)
 	@Enumerated(EnumType.STRING)
-	private RequestState state;
+	private SolicitationState state;
 	
 	@ManyToOne
 	@JoinColumn(name = "owner_id", nullable = false)
-	private User owner;
+	private Owner owner;
 	
 	@Getter(onMethod = @__({@JsonIgnore}))
-	@OneToMany(mappedBy = "request")
-	private List<RequestStage> stages = new ArrayList<RequestStage>();
+	@OneToMany(mappedBy = "solicitation")
+	private List<SolicitationStage> stages = new ArrayList<SolicitationStage>();
 	
 	@Getter(onMethod = @__({@JsonIgnore}))
-	@OneToMany(mappedBy = "request")
-	private List<RequestFile> files = new ArrayList<RequestFile>();
+	@OneToMany(mappedBy = "solicitation")
+	private List<SolicitationFile> files = new ArrayList<SolicitationFile>();
 }
