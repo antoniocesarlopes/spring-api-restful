@@ -1,0 +1,9 @@
+# spring Configs  
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_api_db?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
+    username: root
+    password: admin123
+    
+  jpa:
+    show-sql: true

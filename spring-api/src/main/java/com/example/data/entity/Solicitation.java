@@ -1,4 +1,4 @@
-package com.example.data;
+package com.example.data.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -54,8 +54,8 @@ public class Solicitation implements Serializable{
 	private SolicitationState state;
 	
 	@ManyToOne
-	@JoinColumn(name = "owner_id", nullable = false)
-	private Owner owner;
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 	
 	@Getter(onMethod = @__({@JsonIgnore}))
 	@OneToMany(mappedBy = "solicitation")

@@ -1,4 +1,4 @@
-package com.example.data;
+package com.example.data.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,6 +16,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,8 +28,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Data
 @Builder
-@Entity(name = "owner")
-public class Owner implements Serializable{
+@Entity(name = "user")
+public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -52,10 +53,11 @@ public class Owner implements Serializable{
 	private Role role;
 	
 	@Getter(onMethod = @__({@JsonIgnore}))
-	@OneToMany(mappedBy = "owner")
+	@OneToMany(mappedBy = "user")
 	private List<Solicitation> solicitations = new ArrayList<Solicitation>();
 	
 	@Getter(onMethod = @__({@JsonIgnore}))
-	@OneToMany(mappedBy = "owner")
+	@OneToMany(mappedBy = "user")
 	private List<SolicitationStage> stages = new ArrayList<SolicitationStage>();
+	
 }

@@ -1,4 +1,4 @@
-package com.example.data;
+package com.example.data.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -50,6 +50,6 @@ public class SolicitationStage implements Serializable {
 	private Solicitation solicitation;
 	
 	@ManyToOne
-	@JoinColumn(name = "owner_id", nullable = false)
-	private Owner owner;
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 }
