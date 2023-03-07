@@ -1,8 +1,8 @@
 package com.example.data.entity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.example.data.enums.SolicitationState;
@@ -47,7 +47,7 @@ public class Solicitation implements Serializable{
 	
 	@Column(name = "creation_date", nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date creationDate;
+	private LocalDateTime creationDate;
 	
 	@Column(length = 12, nullable = false)
 	@Enumerated(EnumType.STRING)

@@ -1,0 +1,1 @@
+INSERT INTO `user` (`email`, `name`, `password`, `role`) VALUES ('alopes.java@gmail.com', 'Antonio Cesar', '$2a$10$.NUcKmVcDBI4qwMY/hhEf.fZxZwJBTNeA0.D0.fop.gFK/AXL3/lS', 'ADMINISTRATOR');

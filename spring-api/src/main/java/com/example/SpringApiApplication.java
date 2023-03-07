@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
-public class SpringApiApplication {
+public class SpringApiApplication extends ServletInitializer{
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringApiApplication.class, args);

@@ -4,7 +4,13 @@ server:
 # spring Configs  
 spring:
   profiles:
-    active: prod
+    active: dev
+    
+#File property
+  servlet:
+    multipart:
+      max-request-size: 2MB    
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/spring_api_db?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
@@ -45,4 +51,14 @@ springdoc:
     - /api/**
   swagger-ui:
     use-root-path: false
+    
+#AWS Properties
+aws:
+  s3:
+    bucket-name: spring-api-files
+    access-key: access-key
+    secret-key: secret-key
+    
+    
+#https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#appendix.application-properties.web    
       

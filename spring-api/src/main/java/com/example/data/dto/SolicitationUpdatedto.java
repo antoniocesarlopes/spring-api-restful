@@ -1,11 +1,5 @@
 package com.example.data.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.example.data.entity.User;
-import com.example.data.entity.Solicitation;
-import com.example.data.entity.SolicitationStage;
 import com.example.data.enums.SolicitationState;
 
 import jakarta.validation.constraints.NotBlank;
@@ -20,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class SolicitationUpdatedto {
+	
 	@NotBlank(message = "Subject required")
 	private String subject;
 	private String description;
@@ -28,11 +23,6 @@ public class SolicitationUpdatedto {
 	private SolicitationState state;
 	
 	@NotNull(message = "User required")
-	private User user;
-	private List<SolicitationStage> stages = new ArrayList<SolicitationStage>();
+	private Long userId;
 	
-	public Solicitation transformToSolicitation() {
-		Solicitation solicitation = new Solicitation(null, this.subject, this.description, null, this.state, this.user, stages, null);
-		return solicitation;
-	}
 }

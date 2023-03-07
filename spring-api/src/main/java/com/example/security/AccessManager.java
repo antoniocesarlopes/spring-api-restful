@@ -22,7 +22,7 @@ public class AccessManager {
 	private SolicitationService solicitationService;
 	
 	public boolean isOwner(Long id) {
-		String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String email = (String) getUserNameFromContext();
 		Optional<User> result = userRepository.findByEmail(email);
 		
 		if(!result.isPresent()) throw new NotFoundException("There are not user with email = " + email);
@@ -32,8 +32,8 @@ public class AccessManager {
 		return user.getId() == id;
 	}
 	
-	public boolean isRequestOwner(Long id) {
-		String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	public boolean isSolicitationUser(Long id) {
+		String email = (String) getUserNameFromContext();
 		Optional<User> result = userRepository.findByEmail(email);
 		
 		if(!result.isPresent()) throw new NotFoundException("There are not user with email = " + email);
@@ -43,6 +43,17 @@ public class AccessManager {
 		Solicitation solicitation = solicitationService.getById(id);
 		
 		return user.getId() == solicitation.getUser().getId();
+		
+	}
+
+	private String getUserNameFromContext() {
+		org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		if(user != null) {
+			return user.getUsername();
+		}else {
+			throw new NotFoundException("There are not user in context");
+		}
 		
 	}
 

@@ -29,7 +29,7 @@ public class AuthServices {
 	private UserRepository repository;
 	
 	@SuppressWarnings("rawtypes")
-	public ResponseEntity signin(AccountCredentialsVO data) {
+	public TokenVO signin(AccountCredentialsVO data) {
 		try {
 			var username = data.getUsername();
 			var password = data.getPassword();
@@ -38,7 +38,7 @@ public class AuthServices {
 			
 			var user = repository.findByEmail(username);
 			
-			var tokenResponse = new TokenVO();
+			TokenVO tokenResponse = new TokenVO();
 			if (user.isPresent()) {
 				List<String> roles = new ArrayList<>();
 				roles.add(user.get().getRole().name());
@@ -46,22 +46,22 @@ public class AuthServices {
 			} else {
 				throw new UsernameNotFoundException("Username " + username + " not found!");
 			}
-			return ResponseEntity.ok(tokenResponse);
+			return tokenResponse;
 		} catch (Exception e) {
 			throw new BadCredentialsException("Invalid username/password supplied!");
 		}
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public ResponseEntity refreshToken(String username, String refreshToken) {
+	public TokenVO refreshToken(String username, String refreshToken) {
 		var user = repository.findByEmail(username);
 		
-		var tokenResponse = new TokenVO();
+		TokenVO tokenResponse = new TokenVO();
 		if (user != null) {
 			tokenResponse = tokenProvider.refreshToken(refreshToken);
 		} else {
 			throw new UsernameNotFoundException("Username " + username + " not found!");
 		}
-		return ResponseEntity.ok(tokenResponse);
+		return tokenResponse;
 	}
 }
